@@ -1,10 +1,8 @@
-import { Episode } from "./episode";
-
 export class Series {
     constructor(
         private id: string,
         private title: string,
-        private date: string,
+        private date: Date,
         private synopsis: string,
         private link: string,
         private picture: string,
@@ -26,11 +24,11 @@ export class Series {
             this.title = title;
         }
         
-        public getDate(): string {
+        public getDate(): Date {
             return this.date;
         }
         
-        public setDate(date: string): void {
+        public setDate(date: Date): void {
             this.date = date;
         }
                 
@@ -57,20 +55,4 @@ export class Series {
         public setPicture(picture: string): void {
             this.picture = picture;
         }
-}
-
-export class SerieWithEpisodes extends Series {
-    constructor(
-        id: string,
-        title: string,
-        date: string,
-        synopsis: string,
-        link: string,
-        picture: string,
-        private episodes: Episode[]
-        ) {
-            super(id, title, date, synopsis, link, picture);
-        }
-        
-        // falta estruturar essa classe melhor - abrir atendimento para ver como acessar o array de episodios.
 }
