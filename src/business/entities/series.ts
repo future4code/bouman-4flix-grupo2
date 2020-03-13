@@ -1,3 +1,5 @@
+import { Episode } from "./episode";
+
 export class Series {
     constructor(
         private id: string,
@@ -40,7 +42,7 @@ export class Series {
             this.synopsis = synopsis;
         }
         
-        public getLink(): string | undefined {
+        public getLink(): string {
             return this.link;
         }
         
@@ -48,11 +50,29 @@ export class Series {
             this.link = link;
         }
 
-        public getPicture(): string | undefined {
+        public getPicture(): string {
             return this.picture;
         }
         
         public setPicture(picture: string): void {
             this.picture = picture;
         }
+}
+
+export class SeriesWithEpisodes extends Series {
+    constructor(
+        id: string,
+        title: string,
+        date: Date,
+        synopsis: string,
+        link: string,
+        picture: string,
+        private episodes: Episode[]
+    ) {
+        super(id, title, date, synopsis, link, picture);
+    }
+            
+    public getEpisode(): Episode[] {
+        return this.episodes;
+    }       
 }

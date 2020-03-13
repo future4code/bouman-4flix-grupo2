@@ -2,7 +2,7 @@ import { Series } from "../../entities/series";
 import { v4 } from "uuid";
 import { SeriesGateway } from "../../gateways/seriesGateway";
 import { InvalidParameterError } from "../../error/InvalidParameterError";
-import { Episode } from "../../entities/episode";
+import { EpisodeWithSeries } from "../../entities/episode";
 import { EpisodeGateway } from "../../gateways/episodeGateway";
 
 
@@ -51,7 +51,7 @@ export class CreateSeriesUC {
         input.episodes.forEach( async(episodeInput) => {
             const episodeId = v4();
 
-            const episodeOfSeries = new Episode(
+            const episodeOfSeries = new EpisodeWithSeries(
                 episodeId,
                 episodeInput.title,
                 episodeInput.length,
