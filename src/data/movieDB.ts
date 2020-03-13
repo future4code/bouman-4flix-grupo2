@@ -1,7 +1,9 @@
 import { BaseDB } from "./baseDB";
 import { Movie } from "../business/entities/movie"
+import { MovieGateway } from "../business/gateways/movieGateway";
 
-export class MovieDB extends BaseDB {
+
+export class MovieDB extends BaseDB implements MovieGateway{
     private movieTableName: string = "movies";
 
     private mapDateToDbDate(input: Date): string {

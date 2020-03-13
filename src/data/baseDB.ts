@@ -1,14 +1,15 @@
 import knex from 'knex';
+require('dotenv').config()
 
 export abstract class BaseDB {
-    protected connection = knex({
-      client: "mysql",
-      connection: {
-        host: "ec2-18-229-236-15.sa-east-1.compute.amazonaws.com",
-        port: 3306,
-        user: "igor",
-        password: "I84eG3HJ3w!iGDg3TLYH",
-        database: `bouman-igor`
-      }
-    });
+  protected connection = knex({
+    client: "mysql",
+    connection: {
+      host: process.env.DB_HOST,
+      port: 3306,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME
+    }
+  });
   }

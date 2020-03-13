@@ -1,3 +1,5 @@
+import { Series } from "./series";
+
 export class Episode {
     constructor(
         private id: string,
@@ -6,6 +8,7 @@ export class Episode {
         private link: string,
         private picture: string,
         private synopsis: string,
+        private series: Series
         ){ }
         
         public getId(): string {
@@ -32,7 +35,7 @@ export class Episode {
             this.length = length;
         }
 
-        public getLink(): string | undefined {
+        public getLink(): string {
             return this.link;
         }
         
@@ -40,7 +43,7 @@ export class Episode {
             this.link = link;
         }
 
-        public getPicture(): string | undefined {
+        public getPicture(): string {
             return this.picture;
         }
         
@@ -54,5 +57,13 @@ export class Episode {
         
         public setSynopsis(synopsis: string): void {
             this.synopsis = synopsis;
+        }  
+
+        public getSeries(): Series {
+            return this.series;
         }
+        
+        public setSeries(series: Series): void {
+            this.series = series;
+        }  
 }
