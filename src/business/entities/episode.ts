@@ -8,8 +8,7 @@ export class Episode {
         private link: string,
         private picture: string,
         private synopsis: string,
-        private series: Series
-        ){ }
+    ){ }
         
         public getId(): string {
             return this.id;
@@ -57,13 +56,28 @@ export class Episode {
         
         public setSynopsis(synopsis: string): void {
             this.synopsis = synopsis;
-        }  
+        }   
+}
 
-        public getSeries(): Series {
-            return this.series;
-        }
+
+export class EpisodeWithSeries extends Episode {
+    constructor(
+        id: string,
+        title: string,
+        length: string,
+        link: string,
+        picture: string,
+        synopsis: string,
+        private series: Series
+    ) {
+        super(id, title, length, link, picture, synopsis);
+    }
         
-        public setSeries(series: Series): void {
-            this.series = series;
-        }  
+    public setSeries(series: Series): void {
+        this.series = series;
+    }
+    
+    public getSeries(): Series {
+        return this.series;
+    }    
 }
