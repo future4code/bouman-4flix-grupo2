@@ -34,4 +34,24 @@ export class EpisodeDB extends BaseDB implements EpisodeGateway{
             allEpisodesFromSeries
         )    
     }
+
+    public async getEpisodeFromId(id: string): Promise<EpisodeWithSeries | undefined> {
+        const result = await this.connection.raw(`SELECT * from ${this.episodeTableName} WHERE id = ${id};`)
+
+        if(!result[0][0]) {
+            return undefined
+        }
+
+        const episode = new EpisodeWithSeries(
+            result[0][0].id,
+            result[0][0].title,
+            result[0][0].picture,
+            result[0][0].synopsis,
+            result[0][0].length,
+            result[0][0].link,
+            result[0][0].,
+            result[0][0].id,
+        )
+    } 
+
 }
